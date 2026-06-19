@@ -57,6 +57,7 @@ function compute(operator) {
         case "C":
             operator_count.length = 0;
             content.length = 0;
+            visualizer.textContent = "Expressions/values will be displayed here"
             break;
     };
 };
@@ -70,9 +71,10 @@ keypad.forEach((key) => {
     key.classList.add(class_name);
 });
 
+
 numberspad.addEventListener('click', (e) => {
     if (e.target.tagName !== "BUTTON") return;
-    
+
     content.push(e.target.textContent);
     visualizer.textContent = content.join("");
     console.log(content);
@@ -85,7 +87,7 @@ operators.addEventListener('click', (e) => {
         console.log(operator_count);
         compute(operator_count.at(-1));
     } else if (e.target.textContent == "C"){
-        compute(operator_count.at(-1))
+        compute("C")
     } else {
         content.push(e.target.textContent);
         operator_count.push(e.target.textContent)
