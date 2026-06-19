@@ -1,0 +1,77 @@
+.main_frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(40, 40, 44);
+    padding: 40px;
+}
+
+
+button {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 0px solid rgb(255, 255, 255);
+    border-radius: 1.12em;
+    color: rgb(227, 227, 227);
+    font-weight: bold;
+    background-color: rgb(54, 55, 58);
+}
+
+
+.special {
+    
+}
+
+.keypad {
+    display: flex;
+    width: 380px;
+    height: 250px;
+    justify-content: center;
+    
+}
+
+.numberspad {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 170px;
+    justify-content: space-between;
+    align-content: space-between;
+    margin-right: 25px;
+}
+
+.operators {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    max-height: 249px;
+    width: 110px;
+    align-content: space-between;
+}
+
+.operators button {
+    background-color: rgb(26, 26, 28);
+    font-weight: 400;
+    
+}
+
+.operators .special {
+    background-color: rgb(189, 211, 233);
+    color: black;
+    flex: auto;
+}
+
+.visualizer {
+    display: flex;
+    background-color: black;
+    color: grey;
+    padding: 7px 20px;
+    margin-bottom: 20px;
+    height:50px;
+    width: 305px;
+    border-radius: 0.75em;
+    align-items: center;
+};
+
