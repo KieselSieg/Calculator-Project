@@ -17,7 +17,7 @@ function compute(operator) {
     
     switch (operator) {
         case "+":
-            op_index = content.indexOf("+");
+            op_index = content.lastIndexOf("+");
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
@@ -27,7 +27,7 @@ function compute(operator) {
             return result;
 
         case "-":
-            op_index = content.indexOf("-");
+            op_index = content.lastIndexOf("-");
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
@@ -37,7 +37,7 @@ function compute(operator) {
             return result;
 
         case "×":
-            op_index = content.indexOf("×");
+            op_index = content.lastIndexOf("×");
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
@@ -46,7 +46,7 @@ function compute(operator) {
             content.length = 0;
             return result;
         case "÷":
-            op_index = content.indexOf("÷");
+            op_index = content.lastIndexOf("÷");
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
@@ -54,6 +54,10 @@ function compute(operator) {
             display(result);
             content.length = 0;
             return result;
+        case "C":
+            operator_count.length = 0;
+            content.length = 0;
+            break;
     };
 };
 
@@ -67,20 +71,26 @@ keypad.forEach((key) => {
 });
 
 numberspad.addEventListener('click', (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+    
     content.push(e.target.textContent);
     visualizer.textContent = content.join("");
-    console.log(content)
-})
+    console.log(content);
+});
 
 operators.addEventListener('click', (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+
     if (e.target.textContent == "=") {
         console.log(operator_count);
         compute(operator_count.at(-1));
+    } else if (e.target.textContent == "C"){
+        compute(operator_count.at(-1))
     } else {
-    content.push(e.target.textContent);
-    operator_count.push(e.target.textContent)
-    visualizer.textContent = content.join("");
-    console.log(content)
+        content.push(e.target.textContent);
+        operator_count.push(e.target.textContent)
+        visualizer.textContent = content.join("");
+        console.log(content)
     }
     
 })
