@@ -5,7 +5,7 @@ let keypad = document.querySelectorAll("button")
 
 let content = []
 let nonnumbers = []
-let operator_count = []
+let op_count = []
 
 for (let operator of operators.children) {
     nonnumbers.push(operator.textContent)
@@ -55,7 +55,7 @@ function compute(operator) {
             content.length = 0;
             return result;
         case "C":
-            operator_count.length = 0;
+            op_count.length = 0;
             content.length = 0;
             visualizer.textContent = "Expressions/values will be displayed here"
             break;
@@ -83,16 +83,32 @@ numberspad.addEventListener('click', (e) => {
 operators.addEventListener('click', (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
-    if (e.target.textContent == "=") {
-        console.log(operator_count);
-        compute(operator_count.at(-1));
-    } else if (e.target.textContent == "C"){
-        compute("C")
+    if (op_count.length <= 0){
+        if (e.target.textContent == "=") {
+            console.log(op_count);
+            compute(op_count.at(-1));
+            op_count = []
+        } else if (e.target.textContent == "C"){
+            compute("C")
+        } else {
+            content.push(e.target.textContent);
+            op_count.push(e.target.textContent)
+            visualizer.textContent = content.join("");
+            console.log(content)
+        }
     } else {
-        content.push(e.target.textContent);
-        operator_count.push(e.target.textContent)
-        visualizer.textContent = content.join("");
-        console.log(content)
+        if (e.target.textContent == "=") {
+            console.log(op_count);
+            compute(op_count.at(-1));
+            op_count = []
+
+        } else if (e.target.textContent === "C"){
+            compute("C")
+        } else {
+            content.push(String(compute(op_count.at(-1))))
+            op_count.push(e.target.textContent);
+            content.push(e.target.textContent);
+            visualizer.textContent = content.join("");
+        }
     }
-    
 })
