@@ -21,7 +21,7 @@ function compute(operator) {
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
-            result = num1 + num2;
+            result = (num1 + num2).toFixed(2);
             display(result);
             content.length = 0;
             return result;
@@ -31,7 +31,7 @@ function compute(operator) {
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
-            result = num1 - num2;
+            result = (num1 - num2).toFixed(2);
             display(result);
             content.length = 0;
             return result;
@@ -41,7 +41,7 @@ function compute(operator) {
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
-            result = num1 * num2;
+            result = (num1 * num2).toFixed(2);
             display(result);
             content.length = 0;
             return result;
@@ -50,7 +50,7 @@ function compute(operator) {
             num1 = +content.slice(0, op_index).join("");
             num2 = +content.slice(op_index+1).join("");
 
-            result = num1 / num2;
+            result = (num1 / num2).toFixed(2);
             display(result);
             content.length = 0;
             return result;
